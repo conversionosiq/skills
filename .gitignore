@@ -1,0 +1,26 @@
+# Credentials — never committed. Same patterns are deny-listed for Claude Code
+# sessions in .claude/settings.json and .claude/hooks/protect_secrets.py.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.ppk
+*.keystore
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+secrets/
+*credentials*
+
+# Build output and dependency caches
+node_modules/
+dist/
+build/
+.next/
+__pycache__/
+*.pyc
+*.log

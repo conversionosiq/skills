@@ -30,6 +30,14 @@ Bundled resources:
 - `multi-tenant-architect/references/multi-tenant-crm-architecture.ts` — canonical TypeScript blueprint (TenantConfig registry, NormalizedLead, polymorphic ICrmAdapter, MultiTenantManager)
 - `multi-tenant-architect/references/swarm-roles.md` — sub-agent role prompts and gates for orchestrated multi-tenant builds
 
+## The MindStudio agent fleet
+
+[`mindstudio-agents/`](mindstudio-agents/) holds the version-controlled builds for
+the four customer-facing AI agents (Portal Concierge, Speed-to-Lead Responder,
+Lead Qualifier, Revenue Reporter) — each file is a paste-ready MindStudio agent
+with its prompt, launch variables, output contract, and harness wiring. The
+prompt is the product: edit it here, then re-paste into MindStudio.
+
 ## The `platform/` reference implementation
 
 [`platform/`](platform/) is a working, tested TypeScript implementation of the

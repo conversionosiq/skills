@@ -1,0 +1,27 @@
+{
+  "_comment": "Portal-to-BuilderPrime field mapping. TEMPLATE — replace bp_field IDs with the actual field IDs from the client's BuilderPrime instance before first use. One entry per portal payload field.",
+  "portal": "lovable-lead-form",
+  "crm": "builderprime",
+  "field_map": {
+    "first_name": { "bp_field": "firstName", "required": true },
+    "last_name": { "bp_field": "lastName", "required": true },
+    "phone": { "bp_field": "mobilePhone", "required": true, "transform": "phone_10_digit" },
+    "email": { "bp_field": "emailAddress", "required": false, "transform": "lowercase_trim" },
+    "street": { "bp_field": "addressLine1", "required": false },
+    "city": { "bp_field": "city", "required": false },
+    "state": { "bp_field": "state", "required": false },
+    "zip": { "bp_field": "zip", "required": true },
+    "project_type": { "bp_field": "custom_project_type_REPLACE_ID", "required": false },
+    "financing_interest": { "bp_field": "custom_financing_REPLACE_ID", "required": false },
+    "utm_source": { "bp_field": "leadSource", "required": true },
+    "utm_campaign": { "bp_field": "custom_campaign_REPLACE_ID", "required": false }
+  },
+  "constants": {
+    "leadStatus": "New",
+    "leadType": "Web Portal"
+  },
+  "webhook": {
+    "auth": "scoped_api_key_env:BP_WEBHOOK_KEY",
+    "notes": "Key must be scoped to lead-write only. Never store the key in this file."
+  }
+}

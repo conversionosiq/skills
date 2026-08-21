@@ -1,0 +1,44 @@
+{
+  "_comment": "Expected LeadPerfection export schema. TEMPLATE — verify against a real LP export before first production use, then keep in sync with the CRM export settings. 'aliases' maps known alternate header spellings to their canonical name (all matching is case-insensitive).",
+  "required_headers": [
+    "FirstName",
+    "LastName",
+    "Phone1",
+    "Email",
+    "Address",
+    "City",
+    "State",
+    "Zip",
+    "ProductInterest",
+    "LeadSource",
+    "LeadDate"
+  ],
+  "optional_headers": [
+    "Phone2",
+    "ApptDate",
+    "ApptTime",
+    "SetBy",
+    "Notes",
+    "FinancingInterest",
+    "OwnRent"
+  ],
+  "aliases": {
+    "First Name": "FirstName",
+    "Last Name": "LastName",
+    "Phone": "Phone1",
+    "Primary Phone": "Phone1",
+    "Email Address": "Email",
+    "EmailAddress": "Email",
+    "Street": "Address",
+    "Address1": "Address",
+    "ZipCode": "Zip",
+    "Zip Code": "Zip",
+    "PostalCode": "Zip",
+    "Product": "ProductInterest",
+    "Source": "LeadSource",
+    "Lead Source": "LeadSource",
+    "Date": "LeadDate",
+    "Created": "LeadDate"
+  },
+  "drift_threshold_pct": 5
+}

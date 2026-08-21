@@ -20,12 +20,25 @@ Zone" instead of drowning in eager context.
 | [`builderprime-integration`](.claude/skills/builderprime-integration/SKILL.md) | Secure portal→BuilderPrime webhook/API field mapping with scoped-key enforcement | `/bp` |
 | [`outbound-iq-sync`](.claude/skills/outbound-iq-sync/SKILL.md) | 30-second Golden Window speed-to-lead SMS/email; high-EQ drips for aged leads | `/iq sync\|campaign` |
 | [`command-center-deploy`](.claude/skills/command-center-deploy/SKILL.md) | Compile Revenue-per-Zip and Agent-Capacity-ROI dashboard; deploy to Supabase Edge Functions | `/deploy --compile\|--encode\|--push` |
+| [`multi-tenant-architect`](.claude/skills/multi-tenant-architect/SKILL.md) | Metadata-driven multi-tenant engine: tenant config registry, DB isolation (schemas/RLS), polymorphic CRM adapters, 30-second client scaffolding | `/tenant design\|middleware\|scaffold\|verify\|swarm` |
 
 Bundled resources:
 
 - `lp-ingest/scripts/lp_ingest.py` — stdlib-only drift check + sanitizer (deterministic, exit code 2 halts on drift)
 - `lp-ingest/references/schema.json` — expected LP export schema (template; verify against a real export)
 - `builderprime-integration/references/bp_map.json` — portal→BP field map (template; fill in real field IDs)
+- `multi-tenant-architect/references/multi-tenant-crm-architecture.ts` — canonical TypeScript blueprint (TenantConfig registry, NormalizedLead, polymorphic ICrmAdapter, MultiTenantManager)
+- `multi-tenant-architect/references/swarm-roles.md` — sub-agent role prompts and gates for orchestrated multi-tenant builds
+
+## The `platform/` reference implementation
+
+[`platform/`](platform/) is a working, tested TypeScript implementation of the
+multi-tenant engine, ready to lift into the master platform repository: tenant
+middleware (fail-closed resolution from verified JWT claims), polymorphic
+LeadPerfection/BuilderPrime adapters, a `scaffold-client` CLI (onboard a tenant in
+under 30 seconds, refuses raw keys), registry + RLS migrations, and an isolation
+test harness (`npm run test:multi-tenant`) proving Client A can never read
+Client B's data.
 
 ## Installation
 

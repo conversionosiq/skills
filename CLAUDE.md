@@ -22,6 +22,7 @@ acting instead of improvising.
 | `builderprime-integration` | Portal→BP webhook/API field mapping and validation (`/bp …`) |
 | `outbound-iq-sync` | 30-second speed-to-lead SMS/email and aged-lead drips (`/iq …`) |
 | `command-center-deploy` | Compile and deploy the revenue dashboard to Supabase (`/deploy …`) |
+| `multi-tenant-architect` | Metadata-driven multi-tenant engine: tenant registry, DB isolation, polymorphic CRM adapters, client scaffolding (`/tenant …`) |
 
 ## Operating rules (always in force)
 

@@ -1,0 +1,77 @@
+{
+  "_comment": "Dev tenant registry. Production uses the public.tenants table (migrations/0001). secretKeyEnvVar holds env-var NAMES only — never actual keys.",
+  "tenants": [
+    {
+      "tenantId": "carolina-home",
+      "clientName": "Carolina Home Remodeling",
+      "isActive": true,
+      "databaseSchema": "tenant_carolina",
+      "crmProvider": "leadperfection",
+      "crmApiSettings": {
+        "baseUrl": "https://api.leadperfection.example.com",
+        "authHeaderName": "Authorization",
+        "rateLimitPerMinute": 60,
+        "secretKeyEnvVar": "CAROLINA_LP_SECRET"
+      },
+      "features": {
+        "enableAutoDialer": true,
+        "enableSpeedToLeadSms": true,
+        "enableDynamicQueueRouting": true
+      },
+      "theme": {
+        "primaryColor": "#0A2540",
+        "secondaryColor": "#C9A23F",
+        "accentColor": "#F4F1EA",
+        "logoUrl": "/assets/tenants/carolina-home/logo.svg"
+      }
+    },
+    {
+      "tenantId": "privacy-fence",
+      "clientName": "Privacy Fence Company",
+      "isActive": true,
+      "databaseSchema": "tenant_privacy_fence",
+      "crmProvider": "builderprime",
+      "crmApiSettings": {
+        "baseUrl": "https://api.builderprime.example.com",
+        "authHeaderName": "x-builderprime-token",
+        "rateLimitPerMinute": 120,
+        "secretKeyEnvVar": "PRIVACY_FENCE_BP_SECRET"
+      },
+      "features": {
+        "enableAutoDialer": false,
+        "enableSpeedToLeadSms": true,
+        "enableDynamicQueueRouting": false
+      },
+      "theme": {
+        "primaryColor": "#1E5631",
+        "secondaryColor": "#FFFFFF",
+        "accentColor": "#A3C9A8",
+        "logoUrl": "/assets/tenants/privacy-fence/logo.svg"
+      }
+    },
+    {
+      "tenantId": "demo-suspended",
+      "clientName": "Suspended Demo Client",
+      "isActive": false,
+      "databaseSchema": "tenant_demo_suspended",
+      "crmProvider": "builderprime",
+      "crmApiSettings": {
+        "baseUrl": "https://api.builderprime.example.com",
+        "authHeaderName": "x-builderprime-token",
+        "rateLimitPerMinute": 60,
+        "secretKeyEnvVar": "DEMO_SUSPENDED_BP_SECRET"
+      },
+      "features": {
+        "enableAutoDialer": false,
+        "enableSpeedToLeadSms": false,
+        "enableDynamicQueueRouting": false
+      },
+      "theme": {
+        "primaryColor": "#333333",
+        "secondaryColor": "#999999",
+        "accentColor": "#CCCCCC",
+        "logoUrl": "/assets/tenants/demo-suspended/logo.svg"
+      }
+    }
+  ]
+}

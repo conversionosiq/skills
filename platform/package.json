@@ -1,0 +1,15 @@
+{
+  "name": "@lks-cosiq/multi-tenant-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Metadata-driven multi-tenant CRM portal engine — reference implementation (run all commands from platform/)",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test:multi-tenant": "tsc && node dist/tests/multi-tenant.test.js",
+    "scaffold-client": "tsc && node dist/scripts/scaffold-client.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1"
+  }
+}

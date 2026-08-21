@@ -1,0 +1,20 @@
+{
+  "_comment": "Fixture: a registry entry that (wrongly) stores a fake raw key inline instead of an env-var name. loadRegistry must reject it.",
+  "tenants": [
+    {
+      "tenantId": "bad-client",
+      "clientName": "Bad Client",
+      "isActive": true,
+      "databaseSchema": "tenant_bad",
+      "crmProvider": "builderprime",
+      "crmApiSettings": {
+        "baseUrl": "https://api.example.com",
+        "authHeaderName": "Authorization",
+        "rateLimitPerMinute": 60,
+        "secretKeyEnvVar": "sk-test-notarealkey-fixture-000000"
+      },
+      "features": { "enableAutoDialer": false, "enableSpeedToLeadSms": false, "enableDynamicQueueRouting": false },
+      "theme": { "primaryColor": "#000", "secondaryColor": "#fff", "accentColor": "#ccc", "logoUrl": "/x.svg" }
+    }
+  ]
+}

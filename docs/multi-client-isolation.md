@@ -60,13 +60,15 @@ operations.
 ## Rolling this into a client repository
 
 1. Copy `.claude/` and `.gitignore` from this repository into the client repo.
-2. Narrow the broad client patterns to credential-bearing names. In particular,
-   `*builderprime*` blocks any file whose *name* contains "builderprime" — in
-   the Privacy Fence repo that would block the integration source code itself.
-   There, replace it with patterns like `*builderprime*key*` and rely on the
-   `.env*` rules for the actual credentials. The same applies to
-   `*leadperfection*`-style patterns in the CHR repo if source files carry those
-   names.
+2. Narrow the broad client patterns to credential-bearing names. A blanket
+   `*builderprime*` blocks any file whose *name* contains "builderprime" — in a
+   repo whose integration source carries that name, that would block the source
+   code itself. Replace it with patterns like `*builderprime*key*`,
+   `*builderprime*secret*`, `*builderprime*token*` and rely on the `.env*`
+   rules for the actual credentials. This repository itself uses the narrowed
+   variants, because its skill harness includes builderprime-named skill and
+   adapter files. The same applies to `*leadperfection*`-style patterns in the
+   CHR repo if source files carry those names.
 3. Write that repository's `CLAUDE.md` from the matching template below, filling
    the placeholders from the client's real systems. Do not paste credential
    values, connection strings, or session tokens into it.

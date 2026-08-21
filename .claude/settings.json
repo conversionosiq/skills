@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/*.env)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.p12)",
+      "Read(**/*.pfx)",
+      "Read(**/*.ppk)",
+      "Read(**/*.keystore)",
+      "Read(**/id_rsa*)",
+      "Read(**/id_dsa*)",
+      "Read(**/id_ecdsa*)",
+      "Read(**/id_ed25519*)",
+      "Read(**/secrets/**)",
+      "Read(**/*credentials*)",
+      "Read(**/*leadperfection_username*)",
+      "Read(**/*leadperfection_password*)",
+      "Read(**/*outbound_iq_api_key*)",
+      "Read(**/*carolina_compass_session_secret*)",
+      "Read(**/*builderprime*key*)",
+      "Read(**/*builderprime*secret*)",
+      "Read(**/*builderprime*token*)",
+      "Read(**/*anon_key*)",
+      "Read(**/*SUPABASE_ACCESS_TOKEN*)",
+      "Read(**/*SUPABASE_DB_PASSWORD*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Edit(**/*.pem)",
+      "Edit(**/*.key)",
+      "Edit(**/secrets/**)",
+      "Write(**/.env)",
+      "Write(**/.env.*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|NotebookEdit|Grep|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect_secrets.py\""
+          }
+        ]
+      }
+    ]
+  }
+}

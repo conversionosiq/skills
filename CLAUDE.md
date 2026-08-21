@@ -1,9 +1,20 @@
 # LKS & COSIQ AI RevOps Harness
 
-This repository is the deterministic harness for the LKS & COSIQ RevOps system.
-Keep this file lean — it loads on every turn. Detailed procedures live in
-lazy-loaded skills under `.claude/skills/`; consult the matching skill before
-acting instead of improvising.
+This repository is the deterministic harness for the LKS & COSIQ RevOps system,
+in the `conversionosiq` GitHub organization. Keep this file lean — it loads on
+every turn. Detailed procedures live in lazy-loaded skills under
+`.claude/skills/`; consult the matching skill before acting instead of
+improvising.
+
+## Multi-client isolation
+
+The active client context for any session attached to this repository is
+**Internal** (Lauren Kingsley Strategy / ConversionOS IQ) — never a client
+engagement. Client production code and client credentials live in each client's
+own repository and are worked on in sessions attached to that repository:
+Carolina Home Remodeling, Privacy Fence Company, and Aully Command each have
+their own. `docs/multi-client-isolation.md` documents the architecture and how
+each repository carries this same security configuration.
 
 ## Stack
 
@@ -36,6 +47,22 @@ acting instead of improvising.
    message (see the Cole Medine protocol in `builderprime-integration`).
 5. **Truth over vanity.** Optimize Revenue per Zip Code and Agent Capacity ROI,
    never raw lead counts or calendar fill.
+
+## Session security configuration
+
+- `.claude/settings.json` carries `permissions.deny` rules that prevent reading
+  or editing credential-pattern files (`.env*`, private keys, certificates,
+  client credential identifiers), and registers a PreToolUse hook.
+- `.claude/hooks/protect_secrets.py` is that hook: it denies Read, Edit, Write,
+  NotebookEdit, Grep, and Bash calls that target a credential-pattern file or
+  reference a known credential identifier. Patterns for client system names that
+  also appear in skill and adapter filenames (BuilderPrime, for example) are
+  scoped to credential-bearing names so the integration files themselves stay
+  readable.
+- `.gitignore` keeps the same credential patterns out of version control.
+- Credential values never appear in this repository — not in skills, docs,
+  examples, or commit messages. Pattern *names* (the string
+  `SUPABASE_ACCESS_TOKEN`, for example) may appear in blocklists; values may not.
 
 ## System Evolution Log
 

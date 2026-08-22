@@ -10,6 +10,7 @@ acting instead of improvising.
 - **LeadPerfection (LP)** — lead CRM / source of lead exports
 - **Five9** — dialer / call center ACD
 - **BuilderPrime (BP)** — job CRM, fed by front-end ("Lovable") portals via webhook
+- **Fireflies** — meeting intelligence / call transcription (MCP: `https://api.fireflies.ai/mcp`)
 - **Supabase Edge Functions** — hosts the Sovereign Command Center dashboard
 
 ## Skills index (lazy-loaded)
@@ -21,6 +22,7 @@ acting instead of improvising.
 | `five9-ingest` | Dialer queue optimization and ACD reporting (`/five9 …`) |
 | `builderprime-integration` | Portal→BP webhook/API field mapping and validation (`/bp …`) |
 | `outbound-iq-sync` | 30-second speed-to-lead SMS/email and aged-lead drips (`/iq …`) |
+| `fireflies-intelligence` | Fireflies meeting intelligence: post-call recaps, transcript mining, CRM/follow-up sync, rep coaching (`/ff …`) |
 | `command-center-deploy` | Compile and deploy the revenue dashboard to Supabase (`/deploy …`) |
 | `multi-tenant-architect` | Metadata-driven multi-tenant engine: tenant registry, DB isolation, polymorphic CRM adapters, client scaffolding (`/tenant …`) |
 

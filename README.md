@@ -19,6 +19,7 @@ Zone" instead of drowning in eager context.
 | [`five9-ingest`](.claude/skills/five9-ingest/SKILL.md) | Dialer queue optimization against arrival curves; ACD reports that expose Lost Time Silos | `/five9 optimize\|report` |
 | [`builderprime-integration`](.claude/skills/builderprime-integration/SKILL.md) | Secure portal→BuilderPrime webhook/API field mapping with scoped-key enforcement | `/bp` |
 | [`outbound-iq-sync`](.claude/skills/outbound-iq-sync/SKILL.md) | 30-second Golden Window speed-to-lead SMS/email; high-EQ drips for aged leads | `/iq sync\|campaign` |
+| [`fireflies-intelligence`](.claude/skills/fireflies-intelligence/SKILL.md) | Fireflies meeting intelligence via MCP: timestamped post-call recaps, transcript mining, CRM/follow-up sync, conversation-analytics coaching | `/ff recap\|search\|sync\|coach\|setup` |
 | [`command-center-deploy`](.claude/skills/command-center-deploy/SKILL.md) | Compile Revenue-per-Zip and Agent-Capacity-ROI dashboard; deploy to Supabase Edge Functions | `/deploy --compile\|--encode\|--push` |
 | [`multi-tenant-architect`](.claude/skills/multi-tenant-architect/SKILL.md) | Metadata-driven multi-tenant engine: tenant config registry, DB isolation (schemas/RLS), polymorphic CRM adapters, 30-second client scaffolding | `/tenant design\|middleware\|scaffold\|verify\|swarm` |
 
@@ -29,6 +30,8 @@ Bundled resources:
 - `builderprime-integration/references/bp_map.json` — portal→BP field map (template; fill in real field IDs)
 - `multi-tenant-architect/references/multi-tenant-crm-architecture.ts` — canonical TypeScript blueprint (TenantConfig registry, NormalizedLead, polymorphic ICrmAdapter, MultiTenantManager)
 - `multi-tenant-architect/references/swarm-roles.md` — sub-agent role prompts and gates for orchestrated multi-tenant builds
+- `fireflies-intelligence/references/mcp-endpoint.md` — Fireflies MCP endpoint (`https://api.fireflies.ai/mcp`): registration/auth options, full tool surface, search grammar, deep-link format
+- `.mcp.json` (repo root) — project-scoped registration of the Fireflies MCP server; approve on first use, then authenticate via `/mcp`
 
 ## The MindStudio agent fleet
 

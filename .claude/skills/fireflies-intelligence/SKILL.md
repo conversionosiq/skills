@@ -57,6 +57,37 @@ After a recap is confirmed accurate:
 - **Dialer routing** → surface next-day-set opportunities and callback
   commitments to `five9-ingest` queue priorities.
 
+### `/ff library [full | since <date>]` — the meeting library routine
+
+The standing routine that pulls, organizes, labels, and documents the whole
+recording archive into one browsable library. Run on demand or on a recurring
+schedule; `full` rebuilds from scratch, `since` appends the new window.
+
+1. **Pull the archive.** `fireflies_get_transcripts limit:50`, paginated with
+   `skip` until exhausted (or `fromDate` for incremental runs). Note meetings
+   whose `summary_status` is `skipped` — they get indexed with links only, never
+   fabricated notes.
+2. **Label and categorize every meeting.** Two axes, applied from participants'
+   email domains and content: a **category** (Client Delivery, Sales &
+   Discovery, Partnership & BD, Internal Ops & Team, Content & Events,
+   Personal) and an **account tag** (the client or partner). Personal
+   recordings are labeled and counted but their content is excluded from the
+   business library — title, date, and deep link only.
+3. **Document each business meeting** as a card: date, duration, participants,
+   category + account labels, notes (the verified overview), action items
+   grouped by owner with their timestamps, and the recording deep link.
+4. **Extract the teachings.** Across the archive, distill recurring lessons —
+   the principles that showed up in multiple engagements — each citing its
+   source meetings. This is the training layer: what the archive teaches the
+   team, not just what each call decided.
+5. **Build the action-item register.** Consolidate open commitments by account
+   and owner, newest first, flagging anything past its stated due date.
+6. **Publish as a private artifact** (never into the repo — transcripts and
+   summaries are PII under this skill's rules). Re-running the routine
+   republishes the same artifact URL so the library stays one living document.
+7. Proof of work: state the meeting count pulled vs. indexed, the category
+   totals, and how many meetings lack summaries.
+
 ### `/ff coach [rep | team] [period]` — conversation analytics
 
 Use `fireflies_get_analytics` (team-level needs admin) for talk-listen ratio,
